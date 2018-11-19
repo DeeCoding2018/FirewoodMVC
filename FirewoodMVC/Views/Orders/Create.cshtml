@@ -1,0 +1,171 @@
+﻿@model FirewoodMVC.Models.Order
+@using FirewoodMVC.Models;
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string userName = string.Empty;
+    if (Session["User"] != null)
+    {
+        // Cast Customer as session
+        Customer customer = (Customer)Session["User"];
+        userName = customer.User_Name;
+    }
+    if (Session["User"] != null && Session["Temp"] != null)
+    {
+        Order order = (Order)Session["Temp"];
+    }
+}
+
+<body>
+    <!--Header ----------------------------------------------------------------------------->
+    <header>FIREWOOD PROJECT</header>
+    <!--Navbar ------------------------------------------------------------------------------>
+    <div class="container-fluid">
+        <nav class="navbar ">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="navbar-header">
+                        <div class="d-flex">
+                            <ul class="nav navbar-nav">
+                                <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+                                <li><a href="@Url.Action("About", "Home")">About</a></li>
+                                <li><a href="@Url.Action("Order", "Home")">Order Firewood</a></li>
+                                <li><a href="@Url.Action("Contact", "Home")">Contact</a></li>
+                                <li>@userName</li>
+                                <li><input style="margin:0px;" class="loginBtn" type="button" name="" value="Login" onclick="location.href='@Url.Action("Login", "Home")'" /></li>
+                                <li><input style="margin:0px;" class="registerBtn" type="button" name="" value="Register" onclick="location.href='@Url.Action("Create", "Customers")'" /></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!--Main image -------------------------------------------------------------------------->
+    <div class="container-fluid">
+        <img class="img1" src="~/Content/images/FWP.png" />
+    </div>
+
+    <!--Order containers ----------------------------------------------------------------------->
+    <!--mixtwood container-->
+    <div class="mixtwood floatMenu">
+
+        <div class="floatLeft">
+            <h2>Mixed Wood</h2>
+            <img src="~/Content/images/mixedwood_photo.jpg" alt="mixedwood">
+        </div>
+
+        <div class="floatLeft">
+            <label>Select Amount To Be Ordered:</label><br />
+            <input type="radio" name="amount" value="amnt1" /><label for="amnt1">1/4 Cord ~ $180</label><br />
+            <input type="radio" name="amount" value="amnt2" /><label for="amnt2">1/2 Cord ~ $200</label><br />
+            <input type="radio" name="amount" value="amnt3" /><label for="amnt3">1 Cord ~ $350</label><br />
+            <input type="radio" name="amount" value="amnt4" /><label for="amnt3">2 Cords ~ $700</label>
+        </div>
+
+        <div class="clear"></div>
+    </div>
+
+    <!--hardwood container-->
+    <div class="hardwood floatMenu">
+
+        <div class="floatLeft">
+            <h2>Hard Wood</h2>
+            <img src="~/Content/images/Hardwood_Icon.jpg" alt="hardwood">
+        </div>
+
+        <div class="floatLeft">
+            <label>Select Amount To Be Ordered:</label><br />
+            <input type="radio" name="amount" value="amnt1" /><label for="amnt1">1/4 Cord ~ $200</label><br />
+            <input type="radio" name="amount" value="amnt2" /><label for="amnt2">1/2 Cord ~ $300</label><br />
+            <input type="radio" name="amount" value="amnt3" /><label for="amnt3">1 Cord ~ $500</label><br />
+            <input type="radio" name="amount" value="amnt4" /><label for="amnt3">2 Cords ~ $900</label>
+        </div>
+
+        <div class="clear"></div>
+
+    </div>
+    <div class="clear"></div>
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <p align="center">Please fill in this form to complete the order.</p>
+        <div class="form-horizontal" style="color:white">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group" hidden>
+                @Html.LabelFor(model => model.Customer_Id, "Customer_Id", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-7">
+                    @Html.DropDownList("Customer_Id", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Customer_Id, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Order_Date, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-7">
+                    @Html.EditorFor(model => model.Order_Date, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Order_Date, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Shipped_Date, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-7">
+                    @Html.EditorFor(model => model.Shipped_Date, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Shipped_Date, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Shipping_Address, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-7">
+                    @Html.EditorFor(model => model.Shipping_Address, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Shipping_Address, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.City, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-7">
+                    @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.State, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-7">
+                    @Html.EditorFor(model => model.State, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Zip_Code, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-7">
+                    @Html.EditorFor(model => model.Zip_Code, new { htmlAttributes = new { @class = "form-control", value = "@order.Zip_Code" } })
+                    @Html.ValidationMessageFor(model => model.Zip_Code, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-7">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+
+</body>

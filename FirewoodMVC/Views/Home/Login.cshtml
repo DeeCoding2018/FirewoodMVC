@@ -1,0 +1,43 @@
+﻿@model FirewoodMVC.Models.Customer
+@using FirewoodMVC.Models;
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    string userName = string.Empty;
+    if (Session["User"] != null)
+    {
+        // Cast Customer as session
+        Customer customer = (Customer)Session["User"];
+        userName = customer.User_Name;
+    }
+
+    bool[] fromOrder = (bool[])Session["FromOrder"];
+    if (fromOrder[0] == true && fromOrder[1] == false)
+    {
+        // used to check redirect from orders controller
+        // true false
+        Session["FromOrder"] = new bool[] { true, true };
+        // then sent back to orders create page
+        // use true true in create page to confirm login
+        // then order can proceed
+    }
+
+    <h2 style="color:white">@ViewBag.Username</h2>
+
+    @(Html.BeginForm("Login", "Home", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <div align="center" style="padding-top:25px;">
+            <input type="text" id="user" name="user_name" placeholder="Username" />
+            <input type="text" id="psw" name="password" placeholder="Password" />
+            <input type="submit" name="submit" value="Login" />
+            <div>
+                <br />
+                <p style="color:white;">Register a new account</p>
+                <input type="button" name="" value="Register"/>
+            </div>
+        </div>
+    }
+}

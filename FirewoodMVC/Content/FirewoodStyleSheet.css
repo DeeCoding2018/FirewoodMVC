@@ -1,0 +1,409 @@
+﻿* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+/*navbar ----------------------------------------------------------------------------*/
+.navbar {
+    padding: 0;
+    background-color: olive;
+    float: right;
+    margin-right: 0%;
+    text-align: right;
+    width: 100%;
+    transition: width 3s;
+    margin-bottom: 2px;
+}
+
+.navbar a {
+        position: fixed;
+        display: block;
+        color: white;
+        padding: 22px;
+        text-decoration: none;
+        text-align: center;
+    }
+
+.navbar a:hover {
+            background-color: #ffd800;
+            color: darkolivegreen;
+        }
+
+.navbar li {
+        font-size: 16px;
+        font-weight: bold;
+        font-family: 'Arial';
+        width: 150px;
+        padding: 0;
+        margin: 0;
+    }
+
+/*body -------------------------------------------------------------------------------*/ 
+body {
+    margin: 0;
+    background-color: #39393a;
+}
+
+/*main image ------------------------------------------------------------------------*/
+img {
+    width: 100%;
+    height: 500px;
+    margin: auto;
+}
+
+/*form -----------------------------------------------------------------------------*/ 
+form {
+    z-index: 0;
+    margin-top: 1px;
+    margin-right: 15px;
+    
+}
+
+input[type="text"],
+input[type="submit"]
+input[type="button"]
+input[type="password"]{
+padding: 8px;
+/*margin-right:-430px;*/
+}
+
+input.pass {
+    margin-top: 1px;
+    width: 200px;
+}
+
+input.usern {
+     margin-top: 1px;
+     width: 200px;
+}
+
+input.loginBtn {
+    width: 100px;
+    padding: 7px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 120%;
+    background: #ffd800;
+    color: black;
+    border: 1px solid #3366cc;
+    /*border-radius: 10px;*/
+    -moz-box-shadow: 3px 3px 2px #999;
+    -webkit-box-shadow: 3px 3px 2px #999;
+    box-shadow: 3px 3px 2px #999;
+    margin-left: 1px;
+    /*margin-right: 190px;*/
+    margin-top:10px;
+}
+
+input.loginBtn:hover {
+        color: white;
+        background: olive;
+        border: 1px solid #ffffff;
+    }
+
+input.registerBtn {
+    width: 100px;
+    padding: 7px;
+    /*padding-top: 10px;*/
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 120%;
+    background: #ffd800;
+    color: black;
+    border: 1px solid #3366cc;
+    /*border-radius: 10px;*/
+    -moz-box-shadow: 3px 3px 2px #999;
+    -webkit-box-shadow: 3px 3px 2px #999;
+    box-shadow: 3px 3px 2px #999;
+    /*margin-left: 700px;*/
+    /*margin-top:-999px;*/
+    /*margin-bottom: -100px;*/
+    margin-top: 10px;
+}
+
+.navbar form {
+    margin-left: 450px;
+}
+
+input.registerBtn:hover {
+        color: white;
+        background: olive;
+        border: 1px solid #ffffff;
+    }
+
+/*header ---------------------------------------------------------------------------*/
+header {
+    text-align: left;
+    margin-left: 15px;
+    font-size: 3.5em;
+    font-family: 'Copper';
+    color:olive;
+}
+ 
+/*button for the first link page -----------------------------------------------------*/
+input.MyButton {
+    width: 190px;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 120%;
+    background: #ffd800;
+    color: black;
+    border: 1px solid #3366cc;
+    /*border-radius: 10px;*/
+    -moz-box-shadow: 3px 3px 2px #999;
+    -webkit-box-shadow: 3px 3px 2px #999;
+    box-shadow: 3px 3px 2px #999;
+    margin-left: 790px;
+}
+
+input.MyButton:hover {
+        color: white;
+        background: olive;
+        border: 1px solid #ffffff;
+    }
+
+.content {
+    padding: 10px;
+    height: 200px;
+}
+
+#login{
+    padding-bottom:10px;  
+}
+
+/*main text -------------------------------------------------------------------------*/
+.text h4 {
+    text-align: center;
+    color: white;
+    font-family: 'Arial';
+}
+
+.text h3 {
+    text-align: center;
+    color: white;
+    font-family: 'Arial';
+}
+
+.text h2 {
+    text-align: center;
+    color: white;
+    font-family: 'Arial';
+}
+
+/*contact text -----------------------------------------------------------------------*/
+.contact h3 {
+    text-align: center;
+    color: white;
+    font-family: 'Arial';
+}
+
+.contact p {
+    text-align: center;
+    color: white;
+    font-family: 'Arial';
+}
+
+/*about ----------------------------------------------------------------------------*/
+.content h3{
+    text-align: center;
+    color: white;
+    font-family: 'Arial';
+}
+
+.content p{
+    text-align: center;
+    color: white;
+    font-family: 'Arial';
+}
+
+/*register -------------------------------------------------------------------------*/
+.container h3{
+    text-align: center;
+    color: white;
+    font-family: 'Arial'; 
+}
+
+.container p{
+    text-align: center;
+    color: white;
+    font-family: 'Arial'; 
+}
+
+.container input {
+    width: 500px;
+}
+
+.container {
+    /*align-content:center; --------------------------------------------------------------------------------------*/
+    /*margin-left: 1000px;*/
+}
+/*.container label {
+    color: lightgray;
+}*/
+
+input.SubmitButton {
+    width: 190px;
+    padding: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 120%;
+    background: #ffd800;
+    color: black;
+    border: 1px solid #3366cc;
+    /*border-radius: 10px;*/
+    -moz-box-shadow: 3px 3px 2px #999;
+    -webkit-box-shadow: 3px 3px 2px #999;
+    box-shadow: 3px 3px 2px #999;
+    margin-left: 480px;
+}
+
+input.SubmitButton:hover {
+        color: white;
+        background: olive;
+        border: 1px solid #ffffff;
+    }
+
+.form {
+margin-left: 320px;
+}
+
+input.psw {
+padding: 8px;
+}
+/*footer ---------------------------------------------------------------------------*/
+.footer {
+    left: 0;
+    bottom: 0;
+    background: #808080;
+    text-align: center;
+    padding: 5px;
+    z-index: 10;
+    font-family: 'Arial';
+}
+
+.footer-bottom a {
+  color: #ffd800;
+  text-align: right;
+}
+  .footer-bottom a:hover, .footer-bottom a:focus, .footer-bottom a:active {
+    /*color: darkolivegreen;*/ 
+    color: white; 
+    font-family: 'Arial';
+    text-align: right;
+  }
+  /*---------------------------------------------------------------*/
+  .floatLeft input {
+    text-align: right;
+}
+
+.floatLeft {
+    width: 48%;
+    margin-left: 10px;
+    padding: 10px;
+    float: left;
+    /*border: 1px solid white;*/
+}
+
+.floatLeft > img {
+    height: 100%;
+    width: 100%;
+}
+
+  /*orderpage mixtwood--------------------------------------------------------------------*/
+  .mixtwood {
+    background-color: #39393a;
+    /*width: 750px;*/
+    border: 2px solid white;
+    padding: 25px;
+    margin: 25px;
+} 
+
+.mixtwood h2 {
+    text-align: left;
+    margin-left: 100px;
+    color: white;
+    font-family: 'Arial';
+}
+
+.mixtwood img {
+    /*width: 350px;
+    height: 350px;*/
+   /*-webkit-transform:rotate(180deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transform: rotate(90deg);*/
+}
+
+.mixtwood label {
+    /*float: right;*/
+    text-align: right;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    color: white;
+    font-family: 'Arial';
+    font-size: 18px ;
+}
+
+  /*orderpage hardwood--------------------------------------------------------------------*/
+    .hardwood {
+    background-color: #39393a;
+    /*width: 750px;*/
+    border: 2px solid white;
+    padding: 25px;
+    margin: 25px;
+    /*margin-left: 800px;*/
+} 
+
+.hardwood h2 {
+    text-align: left;
+    margin-left: 100px;
+    color: white;
+    font-family: 'Arial';
+}
+
+.hardwood img {
+    /*width: 150px;
+    height: 250px;*/
+   /*-webkit-transform:rotate(180deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transform: rotate(90deg);*/
+}
+
+
+
+.hardwood label {
+     padding-top: 10px;
+    /*float: right;*/
+    text-align: right;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    color: white;
+    font-family: 'Arial';
+    font-size: 18px ;
+}
+
+
+
+.clear {
+    clear: both;
+}
+
+.centerInput {
+    /*border: 1px solid white;*/
+    width: 1250px;
+    margin: 0 auto;
+}
+
+.centerInput input{
+    left: -500px;
+}
+
+.floatMenu {
+    float: left;
+    width: 45%;
+}

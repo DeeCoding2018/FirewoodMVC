@@ -1,0 +1,83 @@
+﻿@model FirewoodMVC.Models.Order
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Order</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.User_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.User_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee.First_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Employee.First_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Order_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Order_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Shipped_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Shipped_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Shipping_Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Shipping_Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.City)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.City)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.State)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.State)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Zip_Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Zip_Code)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Order_Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

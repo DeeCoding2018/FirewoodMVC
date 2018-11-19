@@ -1,0 +1,98 @@
+﻿@using FirewoodMVC.Models;
+@{
+    ViewBag.Title = "Home Page";
+
+    string userName = string.Empty;
+    if (Session["User"] != null)
+    {
+        // Cast Customer as session
+        Customer customer = (Customer)Session["User"];
+        userName = "Current user: " + customer.User_Name;
+    }
+}
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="~/Content/Firewood.css" />
+    <script src="JavaScript_Login.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <!--Header ----------------------------------------------------------------------------->
+    <header>FIREWOOD PROJECT</header>
+    <!--Navbar ------------------------------------------------------------------------------>
+    <div class="container-fluid">
+        <nav class="navbar ">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="navbar-header">
+                        <ul class="nav navbar-nav">
+                            <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+                            <li><a href="@Url.Action("About", "Home")">About</a></li>
+                            <li><a href="@Url.Action("Create", "Orders")">Order Firewood</a></li>
+                            <li><a href="@Url.Action("Contact", "Home")">Contact</a></li>
+                            <li>@userName</li>
+                            <li><input style="margin:0px;" class="loginBtn" type="button" name="" value="Login" onclick="location.href='@Url.Action("Login", "Home")'" /></li>
+                            <li><input style="margin:0px;" class="registerBtn" type="button" name="" value="Register" onclick="location.href='@Url.Action("Create", "Customers")'" /></li>
+                        </ul>
+
+                        <!--login and register form ------------------------------------------------------------->
+                        @*<form style="float: left;">
+                                <div align="right" id="login">
+                                    <input class="usern" type="text" id="user" name="user" placeholder="Username" />
+                                    <input class="pass" type="text" id="psw" name="password" placeholder="Password" />
+                                    <input class="loginBtn" type="submit" name="submit" value="Login" onclick="window.location.href='@Url.Action("Login", "Home")'" />
+                                    <input class="registerBtn" type="button" name="" value="Register" onclick="window.location.href='@Url.Action("Create", "Customers")'" />
+                                </div>
+                            </form>*@
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!--Main image -------------------------------------------------------------------------->
+    <div class="container-fluid">
+        <img class="img1" src="~/Content/images/FWP.png" />
+    </div>
+
+    <!--Home text ----------------------------------------------------------------------------->
+    <div class="text">
+        <h3><strong>Delivery To These Areas</strong></h3>
+        <br />
+        <p><h4><strong>Bellevue</strong></h4></p>
+        <p><h4><strong>Seattle</strong></h4></p>
+        <p><h4><strong>Renton</strong></h4></p>
+        <p><h4><strong>Redmond</strong></h4></p>
+    </div>
+
+    <!--Helpgul link -------------------------------------------------------------------------------->
+    <div class="text">
+        <form>
+            <div>
+                <p><h3><strong>Firewood Tips: </strong></h3></p><br />
+            </div>
+
+            <input class="MyButton" type="button" value="Learn More" onclick="window.location.href='https://www.almanac.com/content/best-firewood-heat-values-wood-burning-tips'" />
+        </form>
+    </div>
+    <br /><br /><br />
+
+    <!--Footer --------------------------------------------------------------------------------------------->
+    <div class="footer">
+        <p>
+            FireWood Project<br />
+            Located on a Street<br />
+            In a City<br />
+            Washington<br />
+            Contact Number: 1-800-xxx-xxx
+        </p>
+    </div>
+
+    <!--Go to top ------------------------------------------------------------------------------->
+    <div class="footer-bottom">
+        <p></p>
+        <p class="text-center"><a href="#">Back to top</a></p>
+    </div>
+</body>

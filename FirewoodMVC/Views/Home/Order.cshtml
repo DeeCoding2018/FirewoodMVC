@@ -1,0 +1,161 @@
+﻿@model FirewoodMVC.Models.Order
+@using FirewoodMVC.Models;
+
+@{
+    ViewBag.Title = "Order";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string userName = string.Empty;
+    if (Session["User"] != null)
+    {
+        // Cast Customer as session
+        Customer customer = (Customer)Session["User"];
+        userName = customer.User_Name;
+    }
+}
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <title>Order</title>
+    <link rel="stylesheet" type="text/css" href="~/Content/Firewood.css" />
+    <script src="~/Scripts/JavaScript_Login.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <!--Header ----------------------------------------------------------------------------->
+    <header>FIREWOOD PROJECT</header>
+    <!--Navbar ------------------------------------------------------------------------------>
+    <div class="container-fluid">
+        <nav class="navbar ">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="navbar-header">
+                        <div class="d-flex">
+                            <ul class="nav navbar-nav">
+                                <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+                                <li><a href="@Url.Action("About", "Home")">About</a></li>
+                                <li><a href="@Url.Action("Create", "Orders")">Order Firewood</a></li>
+                                <li><a href="@Url.Action("Contact", "Home")">Contact</a></li>
+                                <li>@userName</li>
+                                <li><input style="margin:0px;" class="loginBtn" type="button" name="" value="Login" onclick="location.href='@Url.Action("Login", "Home")'" /></li>
+                                <li><input style="margin:0px;" class="registerBtn" type="button" name="" value="Register" onclick="location.href='@Url.Action("Create", "Customers")'" /></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!--Main image -------------------------------------------------------------------------->
+    <div class="container-fluid">
+        <img class="img1" src="~/Content/images/FWP.png" />
+    </div>
+
+    <!--Order containers ----------------------------------------------------------------------->
+    <!--mixtwood container-->
+    <div class="mixtwood floatMenu">
+
+        <div class="floatLeft">
+            <h2>Mixed Wood</h2>
+            <img src="~/Content/images/mixedwood_photo.jpg" alt="mixedwood">
+        </div>
+
+        <div class="floatLeft">
+            <label>Select Amount To Be Ordered:</label><br />
+            <input type="radio" name="amount" value="amnt1" /><label for="amnt1">1/4 Cord ~ $180</label><br />
+            <input type="radio" name="amount" value="amnt2" /><label for="amnt2">1/2 Cord ~ $200</label><br />
+            <input type="radio" name="amount" value="amnt3" /><label for="amnt3">1 Cord ~ $350</label><br />
+            <input type="radio" name="amount" value="amnt4" /><label for="amnt3">2 Cords ~ $700</label>
+        </div>
+
+        <div class="clear"></div>
+    </div>
+
+    <!--hardwood container-->
+    <div class="hardwood floatMenu">
+
+        <div class="floatLeft">
+            <h2>Hard Wood</h2>
+            <img src="~/Content/images/Hardwood_Icon.jpg" alt="hardwood">
+        </div>
+
+        <div class="floatLeft">
+            <label>Select Amount To Be Ordered:</label><br />
+            <input type="radio" name="amount" value="amnt1" /><label for="amnt1">1/4 Cord ~ $200</label><br />
+            <input type="radio" name="amount" value="amnt2" /><label for="amnt2">1/2 Cord ~ $300</label><br />
+            <input type="radio" name="amount" value="amnt3" /><label for="amnt3">1 Cord ~ $500</label><br />
+            <input type="radio" name="amount" value="amnt4" /><label for="amnt3">2 Cords ~ $900</label>
+        </div>
+
+        <div class="clear"></div>
+
+    </div>
+    <div class="clear"></div>
+
+    <!--Register form ------------------------------------------------------------------------------------->
+    <div class="centerInput">
+        <form>
+            <div class="container">
+                <p>Please fill in this form to complete the order.</p>
+                <hr>
+                <!--Prefill user info if user is logged in and registered-->
+                @{if (Session["User"] != null)
+                    {
+                    }
+                }
+                <div class="form" style="color:white">
+                    @*<label for="username"><b>User Name</b></label><br />
+                    <input type="text" placeholder="Enter User Name" name="user" id="user"/><br />
+
+                    <label for="psw"><b>Password</b></label><br />
+                    <input class="psw" type="password" placeholder="Enter Password" name="pswd" id="psw" /><br />
+
+                    <label for="psw-repeat"><b>Repeat Password</b></label><br />
+                    <input class="psw" type="password" placeholder="Repeat Password" name="psw-repeat" id="repeat" /> <br />*@
+
+                    <label for="fname"><b>First Name</b></label><br />
+                    <input type="text" placeholder="Enter first name" name="fname" id="fn" /><br />
+
+                    <label for="lname" ><b>Last Name</b></label><br />
+                    <input type="text" placeholder="Enter last name" name="lname" id="ln" /><br />
+
+                    <label for="address"><b>Address</b></label><br />
+                    <input type="text" placeholder="Enter address" name="address" id="adrss" /><br />
+
+                    <label for="zip code"><b>Zip Code</b></label><br />
+                    <input type="text" placeholder="Enter zip code" name="zip code" id="zip" /><br />
+
+                    <label for="phone"><b>Phone Number</b></label><br />
+                    <input type="text" placeholder="Enter phone number" name="phone" id="pn" /><br />
+
+                    <label for="email"><b>Email</b></label><br />
+                    <input type="text" placeholder="Enter Email" name="email" id="mail" /><br />
+                    <br />
+                    <br />
+                </div>
+                <input class="SubmitButton" type="submit" name="create" value="Submit Order" />
+            </div>
+        </form>
+    </div>
+    <div class="content">
+    </div>
+    <br /><br />
+
+    <!--Footer --------------------------------------------------------------------------------------------->
+    <div class="footer">
+        <p>
+            FireWood Project<br />
+            Located on a Street<br />
+            In a City<br />
+            Washington<br />
+            Contact Number: 1-800-xxx-xxx
+        </p>
+    </div>
+
+    <!--Go to top ------------------------------------------------------------------------------->
+    <div class="footer-bottom">
+        <p></p>
+        <p class="text-center"><a href="#">Back to top</a></p>
+    </div>
+</body>
+

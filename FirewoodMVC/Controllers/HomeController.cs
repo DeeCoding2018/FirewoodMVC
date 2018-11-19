@@ -113,7 +113,7 @@ namespace FirewoodMVC.Controllers
 
         public bool CheckUsernameAvailable(string username)
         {
-            var SearchData = db.Customers.Where(x => x.User_Name == username).SingleOrDefault();
+            var SearchData = db.Customers.Where(x => x.User_Name == username).Single();
             if (SearchData != null)
             {
                 return false;

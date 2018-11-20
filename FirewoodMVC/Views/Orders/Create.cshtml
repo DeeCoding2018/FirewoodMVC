@@ -15,11 +15,43 @@
         Order order = (Order)Session["Temp"];
     }
     bool[] temp = (bool[])Session["FromOrder"];
-    if (temp[0] == true && temp[1] == true)
+    if (temp != null && temp[0] == true && temp[1] == true)
     {
+        Order order = (Order)Session["Temp"];
+        if (order != null)
+        {
+            var order_date = order.Order_Date;
+            var shipped_date = order.Shipped_Date;
+            var shipping_address = order.Shipping_Address;
+            var city = order.City;
+            var state = order.State;
+            var zip_code = order.Zip_Code;
 
+            <!-- Script section for prefilling info -->
+            <script>
+
+                alert("foo");
+                // not making it into function
+                function prefill() {
+                    alert("@order_date");
+                    document.getElementById('order_Date').value = "@order_date.Month/@order_date.Day/@order_date.Year";
+                    document.getElementById('order_Date').value = "@shipped_date.Month/@shipped_date.Day/@shipped_date.Year";
+                    document.getElementById('shipping_Address').value = "@shipping_address";
+                    document.getElementById('city').value = "@city";
+                    document.getElementById('state').value = "@state";
+                    document.getElementById('zip_code').value = "@zip_code";
+                }
+
+            </script>
+        }
     }
 }
+
+
+@*<script type="text/javascript">
+        alert(order_date);
+        document.getElementById("order_Date").value = order_date;
+    </script>*@
 
 
 <body>
@@ -113,7 +145,8 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.Order_Date, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-7">
-                    @Html.EditorFor(model => model.Order_Date, new { htmlAttributes = new { @class = "form-control" } })
+                    <!-- id used for populating values from JQuery -->
+                    @Html.EditorFor(model => model.Order_Date, new { htmlAttributes = new { @class = "form-control", id = "order_Date" } })
                     @Html.ValidationMessageFor(model => model.Order_Date, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -121,7 +154,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.Shipped_Date, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-7">
-                    @Html.EditorFor(model => model.Shipped_Date, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.EditorFor(model => model.Shipped_Date, new { htmlAttributes = new { @class = "form-control", id = "shipped_Date" } })
                     @Html.ValidationMessageFor(model => model.Shipped_Date, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -129,7 +162,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.Shipping_Address, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-7">
-                    @Html.EditorFor(model => model.Shipping_Address, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.EditorFor(model => model.Shipping_Address, new { htmlAttributes = new { @class = "form-control", id = "shipping_Address" } })
                     @Html.ValidationMessageFor(model => model.Shipping_Address, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -137,7 +170,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.City, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-7">
-                    @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control", id = "city" } })
                     @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -145,7 +178,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.State, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-7">
-                    @Html.EditorFor(model => model.State, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.EditorFor(model => model.State, new { htmlAttributes = new { @class = "form-control", id = "state" } })
                     @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -153,7 +186,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.Zip_Code, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-7">
-                    @Html.EditorFor(model => model.Zip_Code, new { htmlAttributes = new { @class = "form-control", value = "@order.Zip_Code" } })
+                    @Html.EditorFor(model => model.Zip_Code, new { htmlAttributes = new { @class = "form-control", id = "zip_code" } })
                     @Html.ValidationMessageFor(model => model.Zip_Code, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -165,6 +198,10 @@
             </div>
         </div>
     }
+
+    <script>
+        prefill();
+    </script>
 
     <div>
         @Html.ActionLink("Back to List", "Index")

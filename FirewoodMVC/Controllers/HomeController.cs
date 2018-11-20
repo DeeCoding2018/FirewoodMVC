@@ -62,6 +62,11 @@ namespace FirewoodMVC.Controllers
                         //create session info now
                         Session["User"] = customer;
                         ViewBag.Username = customer.User_Name;
+                        bool[] fromOrder = (bool[])Session["FromOrder"];
+                        if (fromOrder != null && fromOrder[0] == true && fromOrder[1] == true)
+                        {
+                            return RedirectToAction("Create", "Orders");
+                        }
                         return RedirectToAction("Index");
                     }
                     else

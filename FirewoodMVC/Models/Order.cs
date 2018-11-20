@@ -21,12 +21,12 @@ namespace FirewoodMVC.Models
         public int Customer_Id { get; set; }
 
         [DisplayName("Order Date")]
-        [DataType(DataType.Date)]
+        //[DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Column(TypeName = "date")]
         public DateTime Order_Date { get; set; }
 
         [DisplayName("Recieved By")]
-        [DataType(DataType.Date)]
+        //[DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Column(TypeName = "date")]
         public DateTime Shipped_Date { get; set; }
 

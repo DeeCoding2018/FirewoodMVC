@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -68,7 +69,9 @@ namespace FirewoodMVC.Controllers
                 // AFTER login repopulate field
                 db.Orders.Add(order);
                 db.SaveChanges();
-                return RedirectToAction("Index", "Home");
+
+                Session["Order_Count"] = db.Orders.Count();
+                return RedirectToAction("Create", "Order_Details");
             }
 
             ViewBag.Customer_Id = new SelectList(db.Customers, "Customer_Id", "User_Name", order.Customer_Id);

@@ -20,14 +20,14 @@ namespace FirewoodMVC.Controllers
 
         public void Init_ProductList()
         {
-            productLists.Add(new ProductList(1, 1, "One Fourth Cord", (decimal)180.00));
-            productLists.Add(new ProductList(2,  1,   "One Half Cord", (decimal)200.00));
-            productLists.Add(new ProductList(3,  1,   "One Cord", (decimal)350.00));
-            productLists.Add(new ProductList(4,  1,   "Two Cords", (decimal)700.00));
-            productLists.Add(new ProductList(5,  2,   "One Fourth Cord", (decimal)200.00));
-            productLists.Add(new ProductList(6,  2,   "One Half Cord", (decimal)300.00));
-            productLists.Add(new ProductList(7,  2,   "One Cord", (decimal)500.00));
-            productLists.Add(new ProductList(8,  2,   "Two Cords", (decimal)900.00));
+            productLists.Add(new ProductList(1, 1, "Mixedwood - One Fourth Cord", (decimal)180.00));
+            productLists.Add(new ProductList(2,  1,   "Mixedwood - One Half Cord", (decimal)200.00));
+            productLists.Add(new ProductList(3,  1,   "Mixedwood - One Cord", (decimal)350.00));
+            productLists.Add(new ProductList(4,  1,   "Mixedwood - Two Cords", (decimal)700.00));
+            productLists.Add(new ProductList(5,  2,   "Hardwood - One Fourth Cord", (decimal)200.00));
+            productLists.Add(new ProductList(6,  2,   "Hardwood - One Half Cord", (decimal)300.00));
+            productLists.Add(new ProductList(7,  2,   "Hardwood - One Cord", (decimal)500.00));
+            productLists.Add(new ProductList(8,  2,   "Hardwood - Two Cords", (decimal)900.00));
             Session["ProductList"] = productLists;
         }
 

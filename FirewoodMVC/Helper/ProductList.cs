@@ -13,7 +13,7 @@ namespace FirewoodMVC.Helper
 
         }
 
-        public ProductList(int orderID, int productID, string name, decimal price)
+        public ProductList(int productID, int orderID, string name, decimal price)
         {
             OrderID = orderID;
             ProductID = productID;

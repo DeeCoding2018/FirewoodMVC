@@ -62,6 +62,11 @@ namespace FirewoodMVC.Controllers
                         //create session info now
                         Session["User"] = customer;
                         ViewBag.Username = customer.User_Name;
+                        bool[] fromOrder = (bool[])Session["FromOrder"];
+                        if (fromOrder != null && fromOrder[0] == true && fromOrder[1] == true)
+                        {
+                            return RedirectToAction("Create", "Orders");
+                        }
                         return RedirectToAction("Index");
                     }
                     else
@@ -113,7 +118,7 @@ namespace FirewoodMVC.Controllers
 
         public bool CheckUsernameAvailable(string username)
         {
-            var SearchData = db.Customers.Where(x => x.User_Name == username).SingleOrDefault();
+            var SearchData = db.Customers.Where(x => x.User_Name == username).Single();
             if (SearchData != null)
             {
                 return false;

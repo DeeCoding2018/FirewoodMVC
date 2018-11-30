@@ -7,7 +7,11 @@
     {
         // Cast Customer as session
         Customer customer = (Customer)Session["User"];
-        userName = "Current user: " + customer.User_Name;
+        userName = customer.User_Name;
+    }
+    if (Session["User"] != null && Session["Temp"] != null)
+    {
+        Order order = (Order)Session["Temp"];
     }
 }
 <head>
@@ -36,6 +40,7 @@
                             <li><input style="margin:0px;" class="loginBtn" type="button" name="" value="Login" onclick="location.href='@Url.Action("Login", "Home")'" /></li>
                             <li><input style="margin:0px;" class="registerBtn" type="button" name="" value="Register" onclick="location.href='@Url.Action("Create", "Customers")'" /></li>
                         </ul>
+                        <ul></ul>
 
                         <!--login and register form ------------------------------------------------------------->
                         @*<form style="float: left;">
@@ -53,9 +58,10 @@
     </div>
 
     <!--Main image -------------------------------------------------------------------------->
-    <div class="container-fluid">
+    <div class="container">
         <img class="img1" src="~/Content/images/FWP.png" />
     </div>
+
 
     <!--Home text ----------------------------------------------------------------------------->
     <div class="text">
@@ -67,18 +73,17 @@
         <p><h4><strong>Redmond</strong></h4></p>
     </div>
 
-    <!--Helpgul link -------------------------------------------------------------------------------->
-    <div class="text">
-        <form>
-            <div>
-                <p><h3><strong>Firewood Tips: </strong></h3></p><br />
-            </div>
-
-            <input class="MyButton" type="button" value="Learn More" onclick="window.location.href='https://www.almanac.com/content/best-firewood-heat-values-wood-burning-tips'" />
-        </form>
+    <!--Helpful link -------------------------------------------------------------------------------->
+    <div class="container">
+        <div class="text-center">
+            <input class="MyButton" type="button" value="Learn More: Firewood Tips" onclick="window.location.href='https://www.almanac.com/content/best-firewood-heat-values-wood-burning-tips'" />
+        </div>
     </div>
+
     <br /><br /><br />
 
+
+    <br /><br /><br />
     <!--Footer --------------------------------------------------------------------------------------------->
     <div class="footer">
         <p>

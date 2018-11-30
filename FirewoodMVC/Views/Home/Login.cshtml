@@ -13,7 +13,7 @@
     }
 
     bool[] fromOrder = (bool[])Session["FromOrder"];
-    if (fromOrder[0] == true && fromOrder[1] == false)
+    if (fromOrder != null && fromOrder[0] == true && fromOrder[1] == false)
     {
         // used to check redirect from orders controller
         // true false

@@ -1,34 +1,74 @@
 ﻿@model FirewoodMVC.Models.Order_Details
-
+@using FirewoodMVC.Models;
+@using FirewoodMVC.Helper;
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+    string userName = string.Empty;
+    if (Session["User"] != null)
+    {
+        // Cast Customer as session
+        Customer customer = (Customer)Session["User"];
+        userName = customer.User_Name;
+    }
+    if (Session["User"] != null && Session["Temp"] != null)
+    {
+        Order order = (Order)Session["Temp"];
+    }
+
+    ProductList productList = new ProductList();
+    List<ProductList> sessionList = (List<ProductList>)Session["ProductList"];
+    productList = sessionList.Find(x => x.ProductID == Model.Product_ID);
+
+    //Script section for prefilling info
+    <script>
+        function prefill()
+        {
+            @*alert("@Session["Order_Count"]");*@
+            document.getElementById('order_id').value = "@productList.Name";
+        }
+    </script>
 }
 
-<h2>Edit</h2>
+
+
 
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Order_Details</h4>
-        <hr />
+
+
+    <div class="form-horizontal" style="color:white">
+        
+        <div class="col-md-12">
+            <h2>Your order has been confirmed, Thank you for your purchase</h2>
+        </div>
+
+        <h4></h4>
+        
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Order_Id)
 
         @Html.HiddenFor(model => model.Product_ID)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Unit_Price, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Unit_Price, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Unit_Price, "", new { @class = "text-danger" })
-            </div>
+        <div class="col-md-12">
+            <hr />
+            <h3>Product: @productList.Name.ToString()</h3>
+            <h3>Cost: $@productList.Price.ToString()</h3>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" hidden>
+            @Html.LabelFor(model => model.Unit_Price, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Unit_Price, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Unit_Price, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
+
+        <div class="form-group" hidden>
             @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control" } })
@@ -36,17 +76,19 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" hidden>
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </div>
     </div>
+
+    <div class="col-md-12" style="margin-top:25px;">
+        @Html.ActionLink("Return to Home", "Index", "Home", new { Style = "color:Yellow" })
+    </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

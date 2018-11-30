@@ -154,14 +154,13 @@ input.MyButton {
     -moz-box-shadow: 3px 3px 2px #999;
     -webkit-box-shadow: 3px 3px 2px #999;
     box-shadow: 3px 3px 2px #999;
-    margin-left: 790px;
 }
 
-    input.MyButton:hover {
-        color: white;
-        background: olive;
-        border: 1px solid #ffffff;
-    }
+input.MyButton:hover {
+    color: white;
+    background: olive;
+    border: 1px solid #ffffff;
+}
 
 .content {
     padding: 10px;

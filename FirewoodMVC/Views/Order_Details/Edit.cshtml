@@ -4,6 +4,19 @@
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+    string userName = string.Empty;
+    if (Session["User"] != null)
+    {
+        // Cast Customer as session
+        Customer customer = (Customer)Session["User"];
+        userName = customer.User_Name;
+    }
+    if (Session["User"] != null && Session["Temp"] != null)
+    {
+        Order order = (Order)Session["Temp"];
+    }
+
     ProductList productList = new ProductList();
     List<ProductList> sessionList = (List<ProductList>)Session["ProductList"];
     productList = sessionList.Find(x => x.ProductID == Model.Product_ID);
@@ -70,8 +83,8 @@
         </div>
     </div>
 
-    <div class="col-md-12">
-        @Html.ActionLink("Thank you for your purchase", "Index")
+    <div class="col-md-12" style="color:white">
+        @Html.ActionLink("Thank you for your purchase", "Index", "Home")
     </div>
 }
 

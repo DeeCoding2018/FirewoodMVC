@@ -1,8 +1,20 @@
 ﻿@model FirewoodMVC.Models.Order_Details
-
+@using FirewoodMVC.Models;
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+    string userName = string.Empty;
+    if (Session["User"] != null)
+    {
+        // Cast Customer as session
+        Customer customer = (Customer)Session["User"];
+        userName = customer.User_Name;
+    }
+    if (Session["User"] != null && Session["Temp"] != null)
+    {
+        Order order = (Order)Session["Temp"];
+    }
 
     int orderCount = 0;
     if (Session["Order_Count"] != null)

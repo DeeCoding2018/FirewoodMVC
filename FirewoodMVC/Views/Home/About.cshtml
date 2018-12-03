@@ -1,12 +1,15 @@
-﻿@{
+﻿@using FirewoodMVC.Models;
+@{
     ViewBag.Title = "About";
     ViewBag.Message = "About Page";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
     string userName = string.Empty;
-    if (Session["UserName"] != null)
+    if (Session["User"] != null)
     {
-        userName = Session["UserName"].ToString();
+        // Cast Customer as session
+        Customer customer = (Customer)Session["User"];
+        userName = customer.User_Name;
     }
 }
 @*<h2>@ViewBag.Title.</h2>
@@ -42,13 +45,13 @@
 
                         <!--login and register form ------------------------------------------------------------->
                         @*<form style="float: left;">
-                            <div align="right" id="login">
-                                <input class="usern" type="text" id="user" name="user" placeholder="Username" />
-                                <input class="pass" type="text" id="psw" name="password" placeholder="Password" />
-                                <input class="loginBtn" type="submit" name="submit" value="Login" onclick="window.location.href='@Url.Action("Login", "Home")'" />
-                                <input class="registerBtn" type="button" name="" value="Register" onclick="window.location.href='@Url.Action("Create", "Customers")'" />
-                            </div>
-                        </form>*@
+                                <div align="right" id="login">
+                                    <input class="usern" type="text" id="user" name="user" placeholder="Username" />
+                                    <input class="pass" type="text" id="psw" name="password" placeholder="Password" />
+                                    <input class="loginBtn" type="submit" name="submit" value="Login" onclick="window.location.href='@Url.Action("Login", "Home")'" />
+                                    <input class="registerBtn" type="button" name="" value="Register" onclick="window.location.href='@Url.Action("Create", "Customers")'" />
+                                </div>
+                            </form>*@
 
                     </div>
                 </div>
@@ -64,9 +67,8 @@
     <!--Text About ---------------------------------------------------------------------------------------------->
     <div class="content">
         <h3><strong>About Us</strong></h3><br />
-        <p>
-            We have been Servicing the greater Seattle and Eastside Area for over 9 years, providing quality firewood that keeps your home cozy and outdoor activities
-            enjoyable. With a variety of wood to keep you set for the season or year round, we pride ourselves in quality products, and customer services.
+        <p style="margin-left:50px; margin-right:50px;">
+            We have been Servicing the greater Seattle and Eastside Area for over 9 years,<br /> providing quality firewood that keeps your home cozy and outdoor activities enjoyable. <br />With a variety of wood to keep you set for the season or year round,<br /> we pride ourselves in quality products, and customer services.
         </p><br />
     </div>
     <br /><br />

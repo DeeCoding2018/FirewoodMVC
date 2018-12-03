@@ -3,6 +3,9 @@
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    DateTime dateTime = DateTime.Now.ToLocalTime();
+    string todayDate = dateTime.Month + "/" + dateTime.Day + "/" + dateTime.Year;
+    string shippedDate = dateTime.Month + "/" + dateTime.Day + "/" + dateTime.Year;
     string userName = string.Empty;
     if (Session["User"] != null)
     {
@@ -29,19 +32,14 @@
 
             <!-- Script section for prefilling info -->
             <script>
-
-                // alert("foo");
-                // not making it into function
                 function prefill() {
-                    // alert("@order_date");
-                    document.getElementById('order_Date').value = "@order_date.Month/@order_date.Day/@order_date.Year";
-                    document.getElementById('shipped_Date').value = "@shipped_date.Month/@shipped_date.Day/@shipped_date.Year";
+                    document.getElementById('order_Date').value = "@dateTime.Month/@dateTime.Day/@dateTime.Year";
+                    document.getElementById('shipped_Date').value = "@dateTime.Month/@dateTime.Day/@dateTime.Year";
                     document.getElementById('shipping_Address').value = "@shipping_address";
                     document.getElementById('city').value = "@city";
                     document.getElementById('state').value = "@state";
                     document.getElementById('zip_code').value = "@zip_code";
                 }
-
             </script>
         }
     }
@@ -85,54 +83,15 @@
         <img class="img1" src="~/Content/images/FWP.png" />
     </div>
 
-    <!--Order containers ----------------------------------------------------------------------->
-    <!--mixtwood container-->
-    @*<div class="mixtwood floatMenu">
-
-        <div class="floatLeft">
-            <h2>Mixed Wood</h2>
-            <img src="~/Content/images/mixedwood_photo.jpg" alt="mixedwood">
-        </div>
-
-        <div class="floatLeft">
-            <label>Select Amount To Be Ordered:</label><br />
-            <input type="radio" name="amount" value="amnt1" /><label for="amnt1">1/4 Cord ~ $180</label><br />
-            <input type="radio" name="amount" value="amnt2" /><label for="amnt2">1/2 Cord ~ $200</label><br />
-            <input type="radio" name="amount" value="amnt3" /><label for="amnt3">1 Cord ~ $350</label><br />
-            <input type="radio" name="amount" value="amnt4" /><label for="amnt3">2 Cords ~ $700</label>
-        </div>
-
-        <div class="clear"></div>
-    </div>*@
-
-    <!--hardwood container-->
-    @*<div class="hardwood floatMenu">
-
-        <div class="floatLeft">
-            <h2>Hard Wood</h2>
-            <img src="~/Content/images/Hardwood_Icon.jpg" alt="hardwood">
-        </div>
-
-        <div class="floatLeft">
-            <label>Select Amount To Be Ordered:</label><br />
-            <input type="radio" name="amount" value="amnt1" /><label for="amnt1">1/4 Cord ~ $200</label><br />
-            <input type="radio" name="amount" value="amnt2" /><label for="amnt2">1/2 Cord ~ $300</label><br />
-            <input type="radio" name="amount" value="amnt3" /><label for="amnt3">1 Cord ~ $500</label><br />
-            <input type="radio" name="amount" value="amnt4" /><label for="amnt3">2 Cords ~ $900</label>
-        </div>
-
-        <div class="clear"></div>
-
-    </div>*@
     <div class="clear"></div>
-
-
+    
+    <hr />
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
-        <p align="center">Please fill in this form to complete the order.</p>
-        <div class="form-horizontal" style="color:white">
-            <hr />
+        <p align="center" style="margin-top:10px; margin-bottom:10px; color:white">Please fill in this form to complete the order.</p>
+        <div class="form-horizontal" style="color:white; margin-left:100px;">
+            
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-group" hidden>
                 @Html.LabelFor(model => model.Customer_Id, "Customer_Id", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -142,19 +101,19 @@
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="form-group" hidden>
                 @Html.LabelFor(model => model.Order_Date, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-7">
                     <!-- id used for populating values from JQuery -->
-                    @Html.EditorFor(model => model.Order_Date, new { htmlAttributes = new { @class = "form-control", id = "order_Date" } })
+                    @Html.EditorFor(model => model.Order_Date, new { htmlAttributes = new { @class = "form-control", id = "order_Date", @Value = @todayDate.ToString() } })
                     @Html.ValidationMessageFor(model => model.Order_Date, "", new { @class = "text-danger" })
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="form-group" hidden>
                 @Html.LabelFor(model => model.Shipped_Date, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-7">
-                    @Html.EditorFor(model => model.Shipped_Date, new { htmlAttributes = new { @class = "form-control", id = "shipped_Date" } })
+                    @Html.EditorFor(model => model.Shipped_Date, new { htmlAttributes = new { @class = "form-control", id = "shipped_Date", @Value = @todayDate.ToString() } })
                     @Html.ValidationMessageFor(model => model.Shipped_Date, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -193,7 +152,7 @@
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-7">
-                    <input type="submit" value="Create" class="btn btn-default" />
+                    <input type="submit" value="Order" class="btn btn-default" />
                 </div>
             </div>
         </div>
@@ -204,7 +163,7 @@
     </script>
 
     <div>
-        @Html.ActionLink("Back to List", "Index")
+       
     </div>
 
     @section Scripts {

@@ -23,9 +23,9 @@
         // then order can proceed
     }
 
-    <h2 style="color:white">@ViewBag.Username</h2>
+    @*<h2 style="color:white">@ViewBag.Username</h2>*@
 
-    @(Html.BeginForm("Login", "Home", FormMethod.Post))
+    using (Html.BeginForm("Login", "Home", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
 
